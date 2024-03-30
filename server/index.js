@@ -1,12 +1,15 @@
 const express = require("express");
 const database = require("./config/database");
-const { data } = require("autoprefixer");
+const userRoutes = require("./routes/User");
+
 require("dotenv").config();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 database.connect();
 
 const app = express();
 app.use(express.json());
+
+app.use("/api/v1/auth", userRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({
