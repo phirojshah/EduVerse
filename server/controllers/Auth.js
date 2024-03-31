@@ -260,7 +260,7 @@ exports.changePassword = async (req, res) => {
     }
 
     //match new password and confirm password
-    if (newPassword === confirmPassword) {
+    if (newPassword !== confirmPassword) {
       // If new password and confirm new password do not match, return a 400 (Bad Request) error
       return res.status(400).json({
         success: false,
